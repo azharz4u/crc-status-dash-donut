@@ -1,0 +1,7 @@
+pymongo==3.4.0
+plotly==2.0.7
+dash==0.17.7
+dash_core_components==0.11.1
+dash_html_components==0.7.0
+dash_renderer==0.7.4
+gunicorn==19.7.1

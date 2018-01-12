@@ -9,7 +9,6 @@ import os
 
 def cluster_plot_layout(name):
     return go.Layout(
-        titlefont = {'size': 8},
         showlegend = False,
         margin = {
             'l': 40,
@@ -17,7 +16,17 @@ def cluster_plot_layout(name):
             't': 10,
             'b': 10,
         },
-        title = name,
+        annotations = [
+            {
+                'visible': True,
+                'text': name,
+                'x': 0.525,
+                'y': 0.45,
+                'font': {
+                    'size': 44,
+                },
+            },
+        ],
     )
 
 
@@ -31,12 +40,13 @@ def cluster_plot_traces(labels, vals):
                     "rgb(0, 105, 255)",
                 ]
             },
-            textinfo = "label+value+percent",
-            textposition = "outside",
+            textinfo = "label",
+            textposition = "inside",
             textfont = {
-                'size': 8
+                'size': 16,
             },
-            hole = 0.85,
+            hole = 0.75,
+            hoverinfo = 'value+text+percent',
         )
     ]
 
@@ -44,7 +54,7 @@ def cluster_plot_traces(labels, vals):
 def get_single_entry(cluster):
     cursor = db['status'].find({'cluster': cluster}).sort('_id', pymongo.DESCENDING).limit(1)
     for item in list(cursor):
-        return [item['allocated'], item['total']]
+        return [item['allocated'], item['total'] - item['allocated']]
 
 
 def generate_smp_figure(labels):
@@ -121,7 +131,7 @@ client = pymongo.MongoClient(uri)
 db = client.get_default_database()
 
 # Useful variables
-labels = ["Allocated", "Total"]
+labels = ["Used", "Free"]
 
 # The app layout w/ custom CSS for the table
 app.layout = generate_layout(labels)

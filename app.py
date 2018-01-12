@@ -17,7 +17,7 @@ def cluster_plot_layout(name):
             't': 10,
             'b': 10,
         },
-        #title = name,
+        title = name,
     )
 
 

@@ -75,13 +75,6 @@ def generate_htc_figure(labels):
     }
 
 
-def generate_ib_figure(labels):
-    return {
-        'data': cluster_plot_traces(labels, get_single_entry("ib")),
-        'layout': cluster_plot_layout("IB")
-    }
-
-
 # The layout function, this allows for the page updates when navigating to the site
 def generate_layout(labels):
     return html.Div([
@@ -104,11 +97,6 @@ def generate_layout(labels):
                     dcc.Graph(
                         id = 'htc-graph',
                         figure = generate_htc_figure(labels),
-                        style = {'display': 'flex', 'width': '30%'}
-                    ),
-                    dcc.Graph(
-                        id = 'ib-graph',
-                        figure = generate_ib_figure(labels),
                         style = {'display': 'flex', 'width': '30%'}
                     ),
                 ], style = {'display': 'flex', 'width': '100%'}
@@ -162,12 +150,6 @@ def update_mpi_graph():
               events=[Event('interval-component', 'interval')])
 def update_htc_graph():
     return generate_htc_figure(labels)
-
-
-@app.callback(Output('ib-graph', 'figure'),
-              events=[Event('interval-component', 'interval')])
-def update_ib_graph():
-    return generate_ib_figure(labels)
 
 
 # Our main function

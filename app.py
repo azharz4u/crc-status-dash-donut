@@ -45,6 +45,7 @@ def cluster_plot_traces(labels, vals):
             textposition = "inside",
             textfont = {
                 'size': 24,
+                'color': '#ffffff',
             },
             hole = 0.65,
             hoverinfo = 'value+text+percent',

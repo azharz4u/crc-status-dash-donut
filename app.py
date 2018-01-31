@@ -92,22 +92,25 @@ def generate_layout(labels):
                     dcc.Graph(
                         id = 'smp-graph',
                         figure = generate_smp_figure(labels),
-                        style = {'display': 'flex', 'width': '30%'}
+                        style = {'display': 'flex', 'width': '50%'}
                     ),
                     dcc.Graph(
                         id = 'gpu-graph',
                         figure = generate_gpu_figure(labels),
-                        style = {'display': 'flex', 'width': '30%'}
-                    ),
+                        style = {'display': 'flex', 'width': '50%'}
+                    )
+                ], style = {'display': 'flex', 'width': '100%'}
+            ),
+            html.Div([
                     dcc.Graph(
                         id = 'mpi-graph',
                         figure = generate_mpi_figure(labels),
-                        style = {'display': 'flex', 'width': '30%'}
+                        style = {'display': 'flex', 'width': '50%'}
                     ),
                     dcc.Graph(
                         id = 'htc-graph',
                         figure = generate_htc_figure(labels),
-                        style = {'display': 'flex', 'width': '30%'}
+                        style = {'display': 'flex', 'width': '50%'}
                     ),
                 ], style = {'display': 'flex', 'width': '100%'}
             ),

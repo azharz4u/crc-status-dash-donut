@@ -11,19 +11,20 @@ def cluster_plot_layout(name):
     return go.Layout(
         showlegend = False,
         margin = {
-            'l': 40,
-            'r': 40,
-            't': 10,
-            'b': 10,
+            'l': 1,
+            'r': 1,
+            't': 1,
+            'b': 1,
         },
         annotations = [
             {
                 'visible': True,
                 'text': name,
-                'x': 0.525,
-                'y': 0.45,
+                'x': 0.5,
+                'y': 0.5,
+                'showarrow': False,
                 'font': {
-                    'size': 44,
+                    'size': 30,
                 },
             },
         ],
@@ -43,9 +44,9 @@ def cluster_plot_traces(labels, vals):
             textinfo = "label",
             textposition = "inside",
             textfont = {
-                'size': 16,
+                'size': 24,
             },
-            hole = 0.75,
+            hole = 0.65,
             hoverinfo = 'value+text+percent',
         )
     ]
@@ -92,33 +93,33 @@ def generate_layout(labels):
                     dcc.Graph(
                         id = 'smp-graph',
                         figure = generate_smp_figure(labels),
-                        style = {'display': 'flex', 'width': '50%'}
+                        style = {'display': 'flex', 'width': '130px'}
                     ),
                     dcc.Graph(
                         id = 'gpu-graph',
                         figure = generate_gpu_figure(labels),
-                        style = {'display': 'flex', 'width': '50%'}
+                        style = {'display': 'flex', 'width': '130px'}
                     )
-                ], style = {'display': 'flex', 'width': '100%'}
+                    ], style = {'display': 'flex', 'width': '260px', 'height': '122px'}
             ),
             html.Div([
                     dcc.Graph(
                         id = 'mpi-graph',
                         figure = generate_mpi_figure(labels),
-                        style = {'display': 'flex', 'width': '50%'}
+                        style = {'display': 'flex', 'width': '130px'}
                     ),
                     dcc.Graph(
                         id = 'htc-graph',
                         figure = generate_htc_figure(labels),
-                        style = {'display': 'flex', 'width': '50%'}
+                        style = {'display': 'flex', 'width': '130px'}
                     ),
-                ], style = {'display': 'flex', 'width': '100%'}
+                ], style = {'display': 'flex', 'width': '260px', 'height': '122px'}
             ),
             dcc.Interval(
                 id = 'interval-component',
                 interval = 5 * 60 * 1000
             )
-        ]
+        ], style = {'width': '260px', 'height': '245px'}
     )
 
 
@@ -138,7 +139,7 @@ labels = ["Used", "Free"]
 
 # The app layout w/ custom CSS for the table
 app.layout = generate_layout(labels)
-app.css.append_css({'external_url': "https://codepen.io/anon/pen/LjQejb.css"})
+#app.css.append_css({'external_url': "https://codepen.io/anon/pen/LjQejb.css"})
 
 
 @app.callback(Output('smp-graph', 'figure'),

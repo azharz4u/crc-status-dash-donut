@@ -36,8 +36,8 @@ def cluster_plot_traces(labels, vals):
             values = vals,
             marker = {'colors':
                 [
-                    "rgb(255, 150, 0)",
-                    "rgb(0, 105, 255)",
+                    "rgb(181, 160, 97)",
+                    "rgb(13, 75, 116)",
                 ]
             },
             textinfo = "label",

@@ -131,7 +131,8 @@ server = app.server
 server.secret_key = os.environ.get('SECRET_KEY', 'my-secret-key')
 
 # Ready the database
-uri = 'mongodb://readonly:36677ee5c75a174cf07b6f88b816a5c4@ds157320.mlab.com:57320/crc-status'
+#uri = 'mongodb://readonly:36677ee5c75a174cf07b6f88b816a5c4@ds157320.mlab.com:57320/crc-status'
+uri = 'mongodb://readonly:aX8z2DdqTFbt0C8mj5YC@ds123956.mlab.com:23956/crc-status-2'
 client = pymongo.MongoClient(uri)
 db = client.get_default_database()
 

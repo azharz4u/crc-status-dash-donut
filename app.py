@@ -139,9 +139,9 @@ db = client.get_default_database()
 # Useful variables
 labels = ["Used", "Free"]
 
-# The app layout w/ custom CSS for the table
-app.layout = generate_layout(labels)
-#app.css.append_css({'external_url': "https://codepen.io/anon/pen/LjQejb.css"})
+# The app layout w/ wrapper for layout
+wrapper = generate_layout(labels)
+app.layout = wrapper
 
 
 @app.callback(Output('smp-graph', 'figure'),

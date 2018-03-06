@@ -49,6 +49,7 @@ def cluster_plot_traces(labels, vals):
             },
             hole = 0.65,
             hoverinfo = 'value+text+percent',
+            sort = False,
         )
     ]
 
@@ -140,8 +141,9 @@ db = client.get_default_database()
 labels = ["Used", "Free"]
 
 # The app layout w/ wrapper for layout
-wrapper = generate_layout(labels)
-app.layout = wrapper
+#wrapper = generate_layout(labels)
+#app.layout = wrapper
+app.layout = lambda: generate_layout(labels)
 
 
 @app.callback(Output('smp-graph', 'figure'),
